@@ -1,0 +1,62 @@
+<%= form_with(model: apartment, local: true, multipart: true) do |form| %>
+  <% if apartment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(apartment.errors.count, "error") %> prohibited this apartment from being saved:</h2>
+
+      <ul>
+      <% apartment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: :apartment_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city, id: :apartment_city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state, id: :apartment_state %>
+  </div>
+
+  <div class="field">
+      <%= form.label :country %>
+      <%= form.text_field :country, id: :apartment_country %>
+  </div>
+
+  <div class="field">
+      <%= form.label :postal %>
+      <%= form.text_field :postal, id: :apartment_postal %>
+  </div>
+
+  <div class="field">
+      <%= form.label :building_man %>
+      <%= form.text_field :building_man, id: :apartment_building_man %>
+  </div>
+
+  <div class="field">
+      <%= form.label :phone %>
+      <%= form.text_field :phone, id: :apartment_phone %>
+  </div>
+
+  <div class="field">
+      <%= form.label :hours %>
+      <%= form.text_field :hours, id: :apartment_hours %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

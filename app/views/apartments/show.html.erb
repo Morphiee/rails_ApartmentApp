@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @apartment.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @apartment.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @apartment.state %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @apartment.country %>
+</p>
+
+<p>
+  <strong>Postal:</strong>
+  <%= @apartment.postal %>
+</p>
+
+<p>
+  <strong>Building Manager:</strong>
+  <%= @apartment.building_man %>
+</p>
+
+<p>
+  <strong>Contact Number:</strong>
+  <%= @apartment.phone %>
+</p>
+
+<p>
+  <strong>Contact Hours:</strong>
+  <%= @apartment.hours %>
+</p>
+
+<%= link_to image_tag(@apartment.image.url(:large)), @apartment.image.url %>
+
+<br>
+
+<%= link_to 'Edit', edit_apartment_path(@apartment) %> |
+<%= link_to 'Back', apartments_path %>

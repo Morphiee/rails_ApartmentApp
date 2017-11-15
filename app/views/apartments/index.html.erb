@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Apartments</h1>
+<br>
+<form action="basic_search" method="get">
+    <input type="text" name="basic_search" placeholder="Search">
+    <input type="submit" value="Search">
+</form>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Postal</th>
+      <th>Building Manager</th>
+      <th>Contact Number</th>
+      <th>Contact Hours</th>
+      <th colspan="8"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @apartments.each do |apartment| %>
+      <tr>
+        <td><%= apartment.address %></td>
+        <td><%= apartment.city %></td>
+        <td><%= apartment.state %></td>
+        <td><%= apartment.country %></td>
+        <td><%= apartment.postal %></td>
+        <td><%= apartment.building_man %></td>
+        <td><%= apartment.phone %></td>
+        <td><%= apartment.hours %></td>
+        <td><%= link_to 'Show', apartment %></td>
+        <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
+        <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Apartment', new_apartment_path %>
