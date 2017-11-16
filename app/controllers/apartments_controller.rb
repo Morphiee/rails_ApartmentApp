@@ -1,11 +1,13 @@
 class ApartmentsController < ApplicationController
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /apartments
   # GET /apartments.json
   def index
     @apartments = Apartment.all
+    @ability = Ability.new(current_user)
   end
 
   # GET /apartments/1
@@ -26,7 +28,6 @@ class ApartmentsController < ApplicationController
   # POST /apartments.json
   def create
     @apartment = current_user.apartments.new(apartment_params)
-
     respond_to do |format|
       if @apartment.save
         format.html { redirect_to @apartment, notice: 'Apartment was successfully created.' }
@@ -63,8 +64,9 @@ class ApartmentsController < ApplicationController
   end
 
   def basic_search
-      @apartments = Apartment.basic_search(params[:basic_search])
-      render 'index.html.erb'
+    @ability = Ability.new(current_user)
+    @apartments = Apartment.basic_search(params[:basic_search])
+    render 'index.html.erb'
   end
 
   private
