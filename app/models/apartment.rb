@@ -1,4 +1,5 @@
 class Apartment < ApplicationRecord
+    belongs_to :user
     validates :address, :city, :state, :country, :postal, :building_man, :phone, :hours, presence: true
     validates :state, length: { is: 2 }
     validates :postal, length: { is: 5 }

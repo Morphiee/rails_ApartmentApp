@@ -1,11 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Apartments</h1>
-<br>
-<form action="basic_search" method="get">
-    <input type="text" name="basic_search" placeholder="Search">
-    <input type="submit" value="Search">
-</form>
+<div class="container">
+    <h1>Apartments</h1>
+    <form id="form" action="basic_search" method="get">
+        <input type="text" name="basic_search" placeholder="Search">
+        <input type="submit" value="Search">
+    </form>
+    <% if user_signed_in? %>
+        <h5><%= current_user.email %></h5>
+        <button>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+    </button>
+    <% else %>
+        <button>
+        <%= link_to('Login', new_user_session_path)  %>
+    </button>
+    <% end %>
+</div>
 <br>
 <table>
   <thead>
