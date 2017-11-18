@@ -8,8 +8,13 @@ class AdminController < ApplicationController
 
     def update
         user = User.find(params[:id])
-        user.roles = []
-        user.add_role(:admin)
+        if user.has_role?(:creator)
+            user.roles = []
+            user.add_role(:admin)
+        elsif user.has_role?(:admin) || user.has_role?(:viewer)
+            user.roles = []
+            user.add_role(:creator)
+        end
         redirect_to '/admin'
     end
 

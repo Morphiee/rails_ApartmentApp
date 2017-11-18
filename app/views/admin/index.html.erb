@@ -18,30 +18,14 @@
           <input type="submit" value="Make Admin"/>
         <% end %>
       </td>
+      <td>
+        <%= form_tag("/admin/" + user.id.to_s + "?role=creator", method: :PUT) do %>
+          <input type="submit" value="Make Creator"/>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<!-- <table>
-    <thead>
-        <tr>
-            <th>User Email</th>
-            <th>Make Admin</th>
-            <th>Delete User</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @users.each do |user| %>
-            <tr>
-                <td><%= user.email %></td>
-                <td>
-                    <%= form_tag("/admin/" + user.id.to_s + "?role=admin", method: :PUT) do %>
-                        <input type="submit" value="Make Admin"/>
-                    <% end %>
-                </td>
-                <td><button type="submit" name="delete_user" value="Delete"></button></td>
-            </tr>
-        <% end %>
-    </tbody>
-</table> -->
+<%= link_to 'Back', apartments_path %>
